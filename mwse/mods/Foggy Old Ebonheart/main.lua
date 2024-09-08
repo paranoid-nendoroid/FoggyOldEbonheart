@@ -30,18 +30,20 @@ local function onGameLoaded(e)
     prevCell = tes3.player.cell
     mwse.log("[FOE] viewRangeIncrementSteps: %s", config.viewRangeIncrementSteps)
     if isOldEbonheart(tes3.player.cell) then
+        local prevRenderDistance = game.renderDistance
         decreaseViewRange()
+        mwse.log("[FOE] player is Old Ebonheart, decreased render distance from %s to %s", prevRenderDistance, game.renderDistance)
     end
 end
 
 local function onCellChanged(e)
     local prevRenderDistance = game.renderDistance
-    if(isOldEbonheart(e.cell) and (not prevCell or not isOldEbonheart(prevCell))) then
+    if(isOldEbonheart(e.cell) and (not isOldEbonheart(prevCell))) then -- Current cell is Old Ebonheart, previous cell is not
         decreaseViewRange()
-        mwse.log("[FOE] Entering Old Ebonheart, decreasing render distance from %s to %s", prevRenderDistance, game.renderDistance)
-    elseif(prevCell and isOldEbonheart(prevCell)) then
+        mwse.log("[FOE] Entering Old Ebonheart, decreased render distance from %s to %s", prevRenderDistance, game.renderDistance)
+    elseif((not isOldEbonheart(e.cell)) and isOldEbonheart(prevCell)) then -- Current cell is not Old Ebonheart, previous cell is
         increaseViewRange()
-        mwse.log("[FOE] Leaving Old Ebonheart, increasing render distance from %s to %s", prevRenderDistance, game.renderDistance)
+        mwse.log("[FOE] Leaving Old Ebonheart, increased render distance from %s to %s", prevRenderDistance, game.renderDistance)
     end
     prevCell = e.cell
 end

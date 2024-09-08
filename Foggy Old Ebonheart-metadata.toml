@@ -1,0 +1,7 @@
+ [package]
+name = "Foggy Old Ebonheart - MWSE optimization hack"
+description = "Decreases the view distance in Old Ebonheart exterior cells to improve performance."
+homepage = "https://www.nexusmods.com/morrowind/mods/49658"
+repository = "https://github.com/paranoid-nendoroid/FoggyOldEbonheart"
+authors = ["paranoid nendoroid"]
+version = "1.0.0"
