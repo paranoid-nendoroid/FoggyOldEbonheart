@@ -1,4 +1,4 @@
- [package]
+[package]
 name = "Foggy Old Ebonheart - MWSE optimization hack"
 description = "Decreases the view distance in Old Ebonheart exterior cells to improve performance."
 homepage = "https://www.nexusmods.com/morrowind/mods/55202"
